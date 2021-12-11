@@ -29,7 +29,6 @@ impl TryFrom<Bytes> for Photon {
     }
 }
 
-
 impl Engine for Photon {
     fn apply(&mut self, specs: &[Spec]) {
         for spec in specs.iter() {
@@ -51,7 +50,6 @@ impl Engine for Photon {
         image_to_buf(self.0, format)
     }
 }
-
 
 impl SpecTransform<&Crop> for Photon {
     fn transform(&mut self, op: &Crop) {
@@ -88,7 +86,6 @@ impl SpecTransform<&Filter> for Photon {
     }
 }
 
-
 impl SpecTransform<&Resize> for Photon {
     fn transform(&mut self, op: &Resize) {
         let img = match resize::ResizeType::from_i32(op.rtype).unwrap() {
@@ -123,4 +120,3 @@ fn image_to_buf(img: PhotonImage, format: ImageOutputFormat) -> Vec<u8> {
     dynimage.write_to(&mut buffer, format).unwrap();
     buffer
 }
-

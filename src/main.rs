@@ -31,7 +31,6 @@ use pb::*;
 
 use crate::engine::Engine;
 
-
 // 参数使用 serde 做 Deserialize，axum 会自动识别并解析
 #[derive(Deserialize)]
 struct Params {
@@ -40,7 +39,6 @@ struct Params {
 }
 
 type Cache = Arc<Mutex<LruCache<u64, Bytes>>>;
-
 
 #[tokio::main]
 async fn main() {
@@ -102,7 +100,6 @@ async fn generate(
     Ok((headers, image))
 }
 
-
 #[instrument(level = "info", skip(cache))]
 async fn retrieve_image(url: &str, cache: Cache) -> Result<Bytes> {
     let mut hasher = DefaultHasher::new();
@@ -126,7 +123,6 @@ async fn retrieve_image(url: &str, cache: Cache) -> Result<Bytes> {
 
     Ok(data)
 }
-
 
 // 调试辅助函数
 fn print_test_url(url: &str) {

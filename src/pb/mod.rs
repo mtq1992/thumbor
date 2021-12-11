@@ -2,7 +2,6 @@ use base64::{decode_config, encode_config, URL_SAFE_NO_PAD};
 use photon_rs::transform::SamplingFilter;
 use prost::Message;
 
-
 mod abi; // 声明abi
 pub use abi::*;
 
@@ -11,7 +10,6 @@ impl ImageSpec {
         Self { specs }
     }
 }
-
 
 // 让 ImageSpec 可以生成一个字符串
 impl From<&ImageSpec> for String {
@@ -31,7 +29,6 @@ impl TryFrom<&str> for ImageSpec {
     }
 }
 
-
 // 辅助函数，photon_rs 相应的方法里需要字符串
 impl filter::Filter {
     pub fn to_str(self) -> Option<&'static str> {
@@ -43,8 +40,6 @@ impl filter::Filter {
         }
     }
 }
-
-
 
 // 在我们定义的 SampleFilter 和 photon_rs 的 SamplingFilter 间转换
 impl From<resize::SampleFilter> for SamplingFilter {
@@ -113,4 +108,3 @@ mod tests {
         assert_eq!(image_spec, s.as_str().try_into().unwrap());
     }
 }
-

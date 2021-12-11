@@ -8,6 +8,8 @@ fn main() {
     if !build_enabled {
         println!("=== Skipped compiling protos ===");
         return;
+    } else {
+        println!("=== compiling protos ===")
     }
 
     prost_build::Config::new()
